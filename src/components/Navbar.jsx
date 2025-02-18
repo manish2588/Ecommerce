@@ -103,12 +103,14 @@ function Navbar() {
           </div>
         </div>
 
-        <p className="relative">
+       <NavLink to={'/cart'}>
+       <p className="relative">
           <img src={assets.cart_icon} className="w-6 h-6" />
           <p className="absolute right-[-5px] bottom-[-5px] w-4 bg-black text-white rounded-full aspect-square text-[10px] text-center">
             1
           </p>
         </p>
+       </NavLink>
       </div>
 
       {/* Sidebar - Visible when toggled */}

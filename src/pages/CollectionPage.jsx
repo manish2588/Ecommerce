@@ -107,7 +107,7 @@ function CollectionPage() {
       {/* Display Filtered Products */}
       <div className="collections w-full px-4">
         <div className="flex items-center space-x-2 lg:justify-between  ">
-          <Title2 text1="All" text2="Collections" />
+          <Title2 text1="ALL" text2="COLLECTIONS" />
           <div className="border border-gray-500 ">
             <select className="p-2 font-light text-base lg:text-medium" onChange={handleSelect}>
                 <option value={''}>Sortby : Relavent </option>

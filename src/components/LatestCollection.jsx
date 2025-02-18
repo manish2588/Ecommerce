@@ -15,8 +15,8 @@ function LatestCollection() {
   return (
     <div>
       <section className="latestCollection  mt-8">
-        <Title text1="Latest" text2={"Collections"} />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:grid-cols-3 mt-4">
+        <Title text1="LATEST" text2={"COLLECTIONS"} />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:grid-cols-3 mt-8">
           {latestCollection.map((item, index) => (
             <div key={index}>
               <NavLink to={`/product/${item._id}`}>
@@ -28,8 +28,8 @@ function LatestCollection() {
         </div>
       </section>
       <section className="mt-8 topSeller">
-        <Title text1="Top" text2={"Seller"} />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:grid-cols-3 mt-4">
+        <Title text1="TOP" text2={"SELLER"} />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:grid-cols-3 mt-8">
           {topSeller.map((item, index) => (
             <div key={index}>
               <NavLink to={`/product/${item._id}`}>

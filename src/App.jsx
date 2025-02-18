@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import "./index.css"
 import CollectionPage from "./pages/CollectionPage";
 import EachProduct from "./pages/EachProduct";
+import AboutPage from "./pages/AboutPage";
+import CartPage from "./pages/CartPage";
 function App() {
   const router = createBrowserRouter([
     {
@@ -21,6 +23,16 @@ function App() {
         {
           path:'/collection',
           element:<CollectionPage/>
+        },
+        {
+          path:'/about',
+          element:<AboutPage/>
+
+        },
+        {
+          path:'/cart',
+          element:<CartPage/>
+
         },
         {
           path: "/product/:id",
