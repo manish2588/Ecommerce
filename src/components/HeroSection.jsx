@@ -2,7 +2,7 @@ import { assets } from "../assets/assets";
 
 function HeroSection() {
   return (
-    <div className="heroSection max-w-screen h-[75vh] border border-gray-500 flex flex-col  lg:flex-row">
+    <div className="heroSection max-w-screen h-[75vh] border border-t-0 border-gray-500 flex flex-col  lg:flex-row">
       <div className="heroLeft w-full lg:basis-1/2 h-full flex flex-col items-center justify-center ">
         <div>
           {" "}

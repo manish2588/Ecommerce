@@ -10,7 +10,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navBar flex items-center justify-between h-20 ">
+    <nav className="navBar flex items-center justify-between h-20  border-b-1 border-gray-300 ">
       {/* Sidebar Icon */}
       <div className="lg:hidden">
         <button onClick={toggleSidebar} className="p-2 focus:outline-none">

@@ -63,7 +63,7 @@ function CollectionPage() {
   }, [categoryValue, type, products,select]);
 
   return (
-    <div className="collectionPage py-4 flex space-x-2 max-w-screen">
+    <div className="collectionPage py-4 flex space-x-2 max-w-screen mt-8">
       <div className="w-72 h-96 filter hidden lg:block">
         <div className="text-gray-800 text-lg font-medium mb-6">FILTERS</div>
         
