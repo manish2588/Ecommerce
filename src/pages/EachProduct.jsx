@@ -12,9 +12,18 @@ function EachProduct() {
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
   const { cartItem } = useSelector((state) => state.cart);
+  const [message, setMessage] = useState("");
 
   const handleClick = (item) => {
-    dispatch(add_to_cart(item));
+    const isInCart = cartItem.find((cart) => cart._id === item._id);
+    if (isInCart) {
+      setMessage("Already in cart");
+      setTimeout(() => setMessage(""), 1000);
+    } else {
+      dispatch(add_to_cart(item));
+      setMessage("Added to cart");
+      setTimeout(() => setMessage(""), 1000);
+    }
   };
 
   console.log(cartItem);
@@ -23,12 +32,20 @@ function EachProduct() {
     const oneProduct = products.find((item) => item._id === id);
     if (oneProduct) {
       setProduct(oneProduct);
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
     }
   }, [products, id]);
 
   return (
     <>
       <main className="eachProduct max-w-full min-h-[80vh] flex flex-col lg:flex-row py-6">
+        {message && (
+          <div className="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/4 bg-blue-300  p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-xl font-serif text-center text-gray-800">
+              {message}
+            </div>
+          </div>
+        )}
         <div className="imageSide h-[50vh] lg:h-[75vh] w-full lg:w-1/2">
           {product && (
             <div className="h-full w-full flex space-x-4">

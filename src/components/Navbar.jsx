@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { cartItem } = useSelector((state) => state.cart);
+  const length=cartItem.length;
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -107,7 +108,7 @@ function Navbar() {
        <p className="relative">
           <img src={assets.cart_icon} className="w-6 h-6" />
           <p className="absolute right-[-5px] bottom-[-5px] w-4 bg-black text-white rounded-full aspect-square text-[10px] text-center">
-            1
+            {length}
           </p>
         </p>
        </NavLink>
