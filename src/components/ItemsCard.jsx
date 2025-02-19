@@ -25,10 +25,12 @@ function ItemsCard({ image, name, price }) {
           initial={{ scaleY: 0, opacity: 0 }}
           animate={controls}
           transition={{ duration: 0.5, ease: easeInOut }}
-          style={{transformOrigin:'bottom'}}
-        > 
-        <img src={assets.cart_icon} className="h-6 w-6 "/>
-          <h1 className="text-gray-800 font-semibold text-base mt-2">ADD TO CART</h1>
+          style={{ transformOrigin: "bottom" }}
+        >
+          <img src={assets.cart_icon} className="h-6 w-6 " />
+          <h1 className="text-gray-800 font-semibold text-base mt-2">
+            ADD TO CART
+          </h1>
         </motion.div>
       </motion.div>
 
