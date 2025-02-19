@@ -15,7 +15,7 @@ function CartPage() {
 
   const handleClick = (id) => {
     dispatch(delete_from_cart(id));
-    setMessage("Item Removed From Cart");
+    setMessage("Item Removed");
     setTimeout(() => setMessage(""), 1000);
   };
 
@@ -41,7 +41,7 @@ function CartPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-6 left-1/2 bg-blue-300 p-4 rounded-lg shadow-lg max-w-[80vw] lg:max-w-[20vw]"
+            className="fixed top-6 left-1/2 bg-blue-300 p-4 transform -translate-x-1/2 -translate-y-1/4 rounded-lg shadow-lg w-[50vw] lg:max-w-[15vw]"
           >
             <div className="text-lg font-serif text-center text-gray-800">
               {message}
