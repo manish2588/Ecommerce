@@ -1,5 +1,14 @@
 import { assets } from "../assets/assets";
-function CardListedItem({ image, name, quantity, price, handleClick, _id ,handleChange}) {
+import { RiDeleteBin6Line } from "react-icons/ri";
+function CardListedItem({
+  image,
+  name,
+  quantity,
+  price,
+  handleClick,
+  _id,
+  handleChange,
+}) {
   return (
     <div className="max-w-full h-auto flex lg:py-4 py-2 border-t-1 border-gray-300 space-x-2">
       <div className="left basis-4/5 lg:basis-2/3 flex space-x-1 lg:space-x-6">
@@ -19,13 +28,19 @@ function CardListedItem({ image, name, quantity, price, handleClick, _id ,handle
           type="number"
           value={quantity}
           className="w-10 lg:w-20 border border-gray-300 h-8 px-2 "
-          onChange={(e)=>handleChange(e,_id)}
-          min={'0'}
+          onChange={(e) => handleChange(e, _id)}
+          min={"0"}
         />
 
         <p>
           <button onClick={() => handleClick(_id)}>
-            <img src={assets.bin_icon} className="h-6 w-6 " />
+            <div className="group">
+              {/* Icon */}
+              <RiDeleteBin6Line
+                size={30}
+                className="text-gray-500 group-hover:text-red-400"
+              />
+            </div>
           </button>
         </p>
       </div>
