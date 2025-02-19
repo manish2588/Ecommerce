@@ -5,6 +5,7 @@ import SimilarProduct from "../components/SimilarProduct";
 import Title from "../components/Title";
 import { useDispatch, useSelector } from "react-redux";
 import { add_to_cart } from "../reduxToolkit/CartSlice";
+import { easeIn, motion } from "framer-motion";
 
 function EachProduct() {
   const { id } = useParams();
@@ -40,11 +41,16 @@ function EachProduct() {
     <>
       <main className="eachProduct max-w-full min-h-[80vh] flex flex-col lg:flex-row py-6">
         {message && (
-          <div className="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/4 bg-blue-300  p-6 rounded-lg shadow-lg max-w-md w-full">
+          <motion.div 
+          initial={{scale:0}}
+          animate={{scale:1}}
+          transition={{duration:0.5,ease:easeIn}}
+          
+          className="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/4 bg-blue-300  px-4 py-4 rounded-lg shadow-lg w-[50vw] lg:max-w-[15vw]">
             <div className="text-xl font-serif text-center text-gray-800">
               {message}
             </div>
-          </div>
+          </motion.div>
         )}
         <div className="imageSide h-[50vh] lg:h-[75vh] w-full lg:w-1/2">
           {product && (

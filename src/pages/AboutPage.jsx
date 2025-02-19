@@ -1,9 +1,13 @@
 import Title from "../components/Title";
 import { assets } from "../assets/assets";
-
+import { easeInOut, motion } from "framer-motion";
 function AboutPage() {
   return (
-    <section className="mt-8 space-y-4">
+    <motion.section className="mt-8 space-y-4"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    transition={{duration:1,ease:easeInOut}}
+    >
       <Title text1={"ABOUT"} text2={"US"} />
       <div className="flex flex-col lg:flex-row">
         <div className="basis-2/5 p-4 object-cover">
@@ -33,7 +37,7 @@ function AboutPage() {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

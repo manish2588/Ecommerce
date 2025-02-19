@@ -19,8 +19,8 @@ function SimilarProduct({ category, subCategory }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-      {relatedProduct.map((item) => (
-        <div key={item.id}>
+      {relatedProduct.map((item,index) => (
+        <div key={index}>
           {" "}
           {/* Assuming item.id is unique */}
           <NavLink to={`/product/${item._id}`}>

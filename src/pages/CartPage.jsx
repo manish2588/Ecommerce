@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import CardListedItem from '../components/CardListedItem';
 import { delete_from_cart ,handle_quantity} from '../reduxToolkit/CartSlice';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { easeIn } from 'framer-motion/dom';
 function CartPage() {
     const { cartItem } = useSelector((state) => state.cart);
     const [message, setMessage] = useState("");
@@ -22,11 +24,15 @@ function CartPage() {
    <section className='mt-8'>
      <div>
      {message && (
-          <div className="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/4 bg-blue-300  p-6 rounded-lg shadow-lg max-w-md w-full">
+          <motion.div 
+          initial={{scale:0}}
+          animate={{scale:1}}
+          transition={{duration:0.5,ease:easeIn}}
+          className="fixed top-6 left-1/2  bg-blue-300  p-4 rounded-lg shadow-lg max-w-[80vw] lg:max-w-[20vw]">
             <div className="text-lg font-serif text-center text-gray-800">
               {message}
             </div>
-          </div>
+          </motion.div>
         )}
         <Title2 text1={'YOUR'} text2={'CART'}/>
      </div>
