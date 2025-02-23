@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink } from "react-router-dom";
-import { useSelector,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toggleSearch } from "../reduxToolkit/ValueSlice";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { cartItem } = useSelector((state) => state.cart);
-  const {isSearchVisible} = useSelector((state) => state.search);
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
+  const { isSearchVisible } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const length = cartItem.length;
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
- const handleSearch=()=>{
-  dispatch(toggleSearch())
-  navigate('/collection')
- }
+  const handleSearch = () => {
+    dispatch(toggleSearch());
+    navigate("/collection");
+  };
   return (
     <nav className="navBar  flex items-center justify-between h-20  border-b-1 border-gray-300">
       {/* Sidebar Icon */}
@@ -78,33 +78,23 @@ function Navbar() {
       </ul>
 
       {/* Icons Group */}
-      <div className="flex items-center gap-x-6" >
+      <div className="flex items-center gap-x-6">
         <img
           src={assets.search_icon}
           className="w-6 h-6 object-cover p-0.5"
           alt="Search"
           onClick={handleSearch}
         />
-        <div className="relative group">
-          <img
-            src={assets.profile_icon}
-            className="w-6 h-6 cursor-pointer"
-            alt="Profile"
-          />
-
-          {/* Dropdown Menu */}
-          <div className="absolute right-0 mt-2 w-28 bg-white shadow-lg rounded-lg hidden group-hover:block transition-opacity duration-300 z-10">
-            <ul className="text-sm text-gray-700">
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                Login
-              </li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                Order
-              </li>
-            </ul>
+        <NavLink to={'/profile'}>
+          {" "}
+          <div className="">
+            <img
+              src={assets.profile_icon}
+              className="w-6 h-6 cursor-pointer"
+              alt="Profile"
+            />
           </div>
-        </div>
-
+        </NavLink>
         <NavLink to={"/cart"}>
           <p className="relative">
             <img src={assets.cart_icon} className="w-6 h-6" />

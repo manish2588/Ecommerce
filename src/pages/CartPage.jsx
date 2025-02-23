@@ -5,20 +5,35 @@ import { delete_from_cart, handle_quantity } from "../reduxToolkit/CartSlice";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Title from "../components/Title";
-
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 function CartPage() {
   const { cartItem } = useSelector((state) => state.cart);
+  const { isAuthenticated}=useSelector((state)=>state.user)
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
-  const shippingFee=10;
-  const subTotal=cartItem.reduce((acc,item)=>acc+(Number((item.price))*Number((item.quantity))),0)
+  const navigate=useNavigate()
+  const shippingFee = 10;
+  const subTotal = cartItem.reduce(
+    (acc, item) => acc + Number(item.price) * Number(item.quantity),
+    0
+  );
 
   const handleClick = (id) => {
     dispatch(delete_from_cart(id));
     setMessage("Item Removed");
     setTimeout(() => setMessage(""), 1000);
   };
-
+  const handleRoute=()=>{
+    if(isAuthenticated)
+    {
+      navigate('/order')
+    }
+   else {
+    setTimeout(()=>alert('Must be login'),500)
+    setTimeout(()=> navigate('/login'),2000)
+   }
+  }
   const handleChange = (e, id) => {
     const value = parseInt(e.target.value);
     dispatch(handle_quantity({ value, id }));
@@ -88,7 +103,13 @@ function CartPage() {
 
           <div className="border-b-1 border-gray-300 flex justify-between">
             <p className="text-gray-800 text-sm font-bold">Total</p>
-            <p className="text-gray-800 text-sm font-bold">{subTotal+10}</p>
+            <p className="text-gray-800 text-sm font-bold">{subTotal + 10}</p>
+          </div>
+          <div className="flex justify-end mt-4">
+            {" "}
+            <button className="bg-black text-white px-6 py-2 hover:bg-gray-800 " onClick={handleRoute}>
+              PROCEED TO CHECKOUT
+            </button>
           </div>
         </div>
       </div>
