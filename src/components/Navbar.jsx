@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSearch } from "../reduxToolkit/ValueSlice";
 import { useNavigate } from "react-router-dom";
+import { CiSearch } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { cartItem } = useSelector((state) => state.cart);
@@ -20,14 +22,12 @@ function Navbar() {
   };
   return (
     <nav className="navBar  flex items-center justify-between h-20  border-b-1 border-gray-300">
-    
       <div className="lg:hidden">
         <button onClick={toggleSidebar} className="p-2 focus:outline-none">
           <img src={assets.menu_icon} className="w-4 h-4" alt="Menu" />
         </button>
       </div>
 
-     
       <div className=" h-12 lg:h-16 w-auto py-2">
         <img
           src={assets.logo}
@@ -77,22 +77,16 @@ function Navbar() {
         </li>
       </ul>
 
-     
       <div className="flex items-center gap-x-6">
-        <img
-          src={assets.search_icon}
-          className="w-6 h-6 object-cover p-0.5"
-          alt="Search"
+        <CiSearch
+          size={30}
           onClick={handleSearch}
+          className="hover:text-gray-400"
         />
-        <NavLink to={'/profile'}>
+        <NavLink to={"/profile"}>
           {" "}
           <div className="">
-            <img
-              src={assets.profile_icon}
-              className="w-6 h-6 cursor-pointer"
-              alt="Profile"
-            />
+          <CgProfile size={30} className="hover:text-gray-400"/>
           </div>
         </NavLink>
         <NavLink to={"/cart"}>
