@@ -5,25 +5,29 @@ import SimilarProduct from "../components/SimilarProduct";
 import Title from "../components/Title";
 import { useDispatch, useSelector } from "react-redux";
 import { add_to_cart } from "../reduxToolkit/CartSlice";
-import { easeIn, motion } from "framer-motion";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function EachProduct() {
   const { id } = useParams();
   const { products } = useShop();
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
   const { cartItem } = useSelector((state) => state.cart);
-  const [message, setMessage] = useState("");
 
   const handleClick = (item) => {
     const isInCart = cartItem.find((cart) => cart._id === item._id);
     if (isInCart) {
-      setMessage("Already in cart");
-      setTimeout(() => setMessage(""), 1000);
+      toast.success("Already in Cart", {
+        position: "top-center",
+        autoClose: 1000,
+      });
     } else {
       dispatch(add_to_cart(item));
-      setMessage("Added to cart");
-      setTimeout(() => setMessage(""), 1000);
+      toast.success("Added to Cart", {
+        position: "top-center",
+        autoClose: 1000,
+      });
     }
   };
 
@@ -33,25 +37,14 @@ function EachProduct() {
     const oneProduct = products.find((item) => item._id === id);
     if (oneProduct) {
       setProduct(oneProduct);
-      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [products, id]);
 
   return (
     <>
       <main className="eachProduct max-w-full min-h-[80vh] flex flex-col lg:flex-row py-6">
-        {message && (
-          <motion.div 
-          initial={{scale:0}}
-          animate={{scale:1}}
-          transition={{duration:0.5,ease:easeIn}}
-          
-          className="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/4 bg-blue-300  px-4 py-4 rounded-lg shadow-lg w-[50vw] lg:max-w-[15vw]">
-            <div className="text-xl font-serif text-center text-gray-800">
-              {message}
-            </div>
-          </motion.div>
-        )}
+        <ToastContainer />
         <div className="imageSide h-[50vh] lg:h-[75vh] w-full lg:w-1/2">
           {product && (
             <div className="h-full w-full flex space-x-4">
@@ -80,17 +73,7 @@ function EachProduct() {
                 ${product.price}
               </p>
               <p className="mt-8 text-gray-500">{product.description}</p>
-              <p className="mt-8 text-gray-900">Select Size</p>
-              <div className="mt-4 space-x-4">
-                {product.sizes.map((size, index) => (
-                  <button
-                    key={index}
-                    className="bg-slate-100 border border-gray-500 px-4 py-2 hover:bg-gray-200"
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
+
               <div className="mt-8">
                 <button
                   className="bg-black text-white px-6 py-2 hover:bg-gray-800"

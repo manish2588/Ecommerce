@@ -36,18 +36,20 @@ const Signup = () => {
 
         toast.success("User registered successfully!", {
           position: "top-center",
+          autoClose:1000
         });
 
         setTimeout(() => {
-          toast.success("Sign-up successful!", { position: "top-center" });
           navigate("/login");
-        }, 2000);
+        }, 1000);
       }
 
       console.log("User Registered:", userCredential.user);
     } catch (error) {
       console.error("Error during registration:", error);
-      toast.error(error.message, { position: "top-center" });
+      toast.error(error.message, { position: "top-center",
+        autoClose:1000
+       });
     }
   };
 

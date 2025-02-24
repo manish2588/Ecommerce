@@ -6,10 +6,16 @@ import { toggleSearch } from "../reduxToolkit/ValueSlice";
 import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
+import { auth } from "./firebase";
+import "react-toastify/dist/ReactToastify.css"; 
+
+import { toast, ToastContainer } from "react-toastify";
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { cartItem } = useSelector((state) => state.cart);
-  const { isSearchVisible } = useSelector((state) => state.search);
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const length = cartItem.length;
@@ -20,8 +26,29 @@ function Navbar() {
     dispatch(toggleSearch());
     navigate("/collection");
   };
+  const handleProfileClick = () => {
+    setIsVisible(!isVisible);
+    navigate("/profile");
+  };
+  const handleLoginButton = () => {
+    setIsVisible(!isVisible);
+    navigate("/login");
+  };
+  const handleSignOutButton = async () => {
+    try {
+      await auth.signOut();
+      setIsVisible(!isVisible);
+      toast.success("Sign Out", {
+        position: "top-center",
+        autoClose: 1000,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <nav className="navBar  flex items-center justify-between h-20  border-b-1 border-gray-300">
+      <ToastContainer />
       <div className="lg:hidden">
         <button onClick={toggleSidebar} className="p-2 focus:outline-none">
           <img src={assets.menu_icon} className="w-4 h-4" alt="Menu" />
@@ -83,12 +110,43 @@ function Navbar() {
           onClick={handleSearch}
           className="hover:text-gray-400"
         />
-        <NavLink to={"/profile"}>
-          {" "}
-          <div className="">
-          <CgProfile size={30} className="hover:text-gray-400"/>
+
+        <div className="relative">
+          <CgProfile
+            size={30}
+            className="hover:text-gray-400"
+            onClick={() => setIsVisible(!isVisible)}
+          />
+          <div
+            className={`absolute top-8 right-0.5  bg-gray-100 rounded-sm ${
+              isVisible ? "block" : "hidden"
+            }`}
+          >
+            <p
+              className="hover:bg-gray-300 px-4 py-2 cursor-pointer"
+              onClick={handleProfileClick}
+            >
+              Profile
+            </p>
+            <p
+              className={`hover:bg-gray-300 px-4 py-2  cursor-pointer ${
+                isAuthenticated && "hidden"
+              }`}
+              onClick={handleLoginButton}
+            >
+              Login
+            </p>
+            <p
+              className={`hover:bg-gray-300 px-4 py-2  cursor-pointer ${
+                !isAuthenticated && "hidden"
+              }`}
+              onClick={handleSignOutButton}
+            >
+              Signout
+            </p>
           </div>
-        </NavLink>
+        </div>
+
         <NavLink to={"/cart"}>
           <p className="relative">
             <img src={assets.cart_icon} className="w-6 h-6" />

@@ -28,7 +28,7 @@ const Login = () => {
         email,
         password
       );
-      navigate("/cart");
+      navigate("/profile");
       console.log("Login successful:", userCredential.user);
       toast.success("Login successful!", { position: "top-center" });
 

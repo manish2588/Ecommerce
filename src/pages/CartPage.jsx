@@ -21,8 +21,10 @@ function CartPage() {
 
   const handleClick = (id) => {
     dispatch(delete_from_cart(id));
-    setMessage("Item Removed");
-    setTimeout(() => setMessage(""), 1000);
+    toast.success("Item Removed", {
+      position: "top-center",
+      autoClose:1000
+    });
   };
   const handleRoute=()=>{
     if(isAuthenticated)
@@ -42,27 +44,16 @@ function CartPage() {
     return (
       <div className="mt-8 flex flex-col items-center mb-8">
         <Title2 text1={"YOUR"} text2={"CART"} />
-        <h1 className="mt-8 text-2xl lg:text-6xl text-gray-500 ">
+        <h1 className="mt-8 text-2xl lg:text-4xl text-gray-500 font-serif ">
           {" "}
-          No Item in Cart
+          NO ITEMS IN CART
         </h1>
       </div>
     );
   return (
     <section className="mt-8">
       <div>
-        {message && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="fixed top-6 left-1/2 bg-blue-300 p-4 transform -translate-x-1/2 -translate-y-1/4 rounded-lg shadow-lg w-[50vw] lg:max-w-[15vw]"
-          >
-            <div className="text-lg font-serif text-center text-gray-800">
-              {message}
-            </div>
-          </motion.div>
-        )}
+       <ToastContainer/>
         <Title2 text1={"YOUR"} text2={"CART"} />
       </div>
 

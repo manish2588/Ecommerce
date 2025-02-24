@@ -62,11 +62,11 @@ const Profile = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>; 
+    return <p className="text-4xl font-serif font-medium text-gray-400">Loading...</p>; 
   }
 
   if (!userData) {
-    return <p>No User Login.</p>; 
+    return <p className="text-4xl font-serif font-medium text-gray-400">No User Login.</p>; 
   }
 
   return (
