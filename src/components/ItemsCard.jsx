@@ -12,7 +12,6 @@ function ItemsCard({ image, name, price }) {
       transition={{ duration: 1, ease: easeInOut }}
       viewport={{ once: true }}
     >
-      {/* Image and Hover Effect */}
       <motion.div
         className="rounded-lg  relative"
         onHoverStart={() => controls.start({ scaleY: 1, opacity: 1 })}
@@ -20,7 +19,6 @@ function ItemsCard({ image, name, price }) {
       >
         <img src={image} className="w-full h-full object-cover" />
 
-        {/* Hover Effect */}
         <motion.div
           className="rounded-lg absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 bg-gray-200/50"
           initial={{ scaleY: 0, opacity: 0 }}
@@ -35,7 +33,6 @@ function ItemsCard({ image, name, price }) {
         </motion.div>
       </motion.div>
 
-      {/* Product Name and Price */}
       <p className="text-gray-500">{name}</p>
       <p className="text-gray-800 font-bold">
         {"$ "}

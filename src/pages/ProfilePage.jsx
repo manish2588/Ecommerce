@@ -48,7 +48,7 @@ const Profile = () => {
       setLoading(false);
     });
 
-    return () => unsubscribe(); // Cleanup the listener on component unmount
+    return () => unsubscribe(); 
   }, []);
 
   const handleClick = async () => {
@@ -62,11 +62,11 @@ const Profile = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>; // Show loading state while fetching data
+    return <p>Loading...</p>; 
   }
 
   if (!userData) {
-    return <p>No data found.</p>; // If no user data exists
+    return <p>No User Login.</p>; 
   }
 
   return (

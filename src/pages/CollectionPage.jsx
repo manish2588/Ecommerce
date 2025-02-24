@@ -9,7 +9,7 @@ import { toggleSearch } from "../reduxToolkit/ValueSlice";
 function CollectionPage() {
   const { products } = useShop();
 
-  // Initialize state
+  
   const [categoryValue, setCategoryValue] = useState([]);
   const [type, setType] = useState([]);
   const [select, setSelect] = useState("");
@@ -102,7 +102,7 @@ function CollectionPage() {
           FILTERS
         </div>
 
-        {/* Category Filters */}
+     
         <div className=" space-y-1 lg:space-y-2 border border-gray-500 px-2 py-1 categories mb-2">
           <p className="text-gray-800">CATEGORIES</p>
           {["Men", "Women", "Kids"].map((category) => (
@@ -120,7 +120,7 @@ function CollectionPage() {
           ))}
         </div>
 
-        {/* Type Filters */}
+       
         <div className="space-y-2 border border-gray-500 mt-6 px-2 py-1 type">
           <p className="text-gray-800">TYPES</p>
           {["Topwear", "Bottomwear", "Winterwear"].map((type) => (
@@ -139,7 +139,7 @@ function CollectionPage() {
         </div>
       </motion.div>
 
-      {/* Display Filtered Products */}
+     
       <motion.div className="collections w-full px-4">
         <motion.div
           className={`w-full ${

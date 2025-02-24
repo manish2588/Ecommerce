@@ -57,7 +57,7 @@ const Login = () => {
       <div className="w-full max-w-md lg:max-w-1/3 p-6 h-full rounded-lg mb-16 ">
       <Title text1={'LOGIN'} text2={'FORM'}/>
 
-        {/* 🔹 Email/Password Login Form */}
+      
         <form onSubmit={handleSubmit(handleLogin)} className="space-y-4 mt-4">
           <div>
             <label className="block text-base lg:text-base font-light mb-4 ">Email</label>
@@ -103,7 +103,7 @@ const Login = () => {
           </button>
         </form>
 
-        {/* 🔹 Google Login Button */}
+       
         <div className="mt-4 flex flex-col items-center">
           <p className="text-gray-500 text-base font-light">OR</p>
           <button
@@ -116,7 +116,7 @@ const Login = () => {
           </button>
         </div>
 
-        {/* 🔹 Signup Redirect */}
+       
         <p className="text-base text-center font-light mt-4">
           Don't have an account?{" "}
           <button className="text-blue-500 underline  font-light" onClick={handleNavigate}>

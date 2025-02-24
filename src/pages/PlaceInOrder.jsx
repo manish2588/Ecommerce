@@ -35,7 +35,7 @@ function PlaceInOrder() {
       <ToastContainer />
       <Title text1="PLACE" text2="ORDER" />
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
-        {/* First Name & Last Name Row */}
+       
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-base font-light">First Name</label>
@@ -66,7 +66,7 @@ function PlaceInOrder() {
           </div>
         </div>
 
-        {/* Email Field */}
+      
         <div>
           <label className="block text-base font-light">Email</label>
           <input
@@ -85,7 +85,7 @@ function PlaceInOrder() {
           )}
         </div>
 
-        {/* Phone Number */}
+        
         <div>
           <label className="block text-base font-light">Phone Number</label>
           <input
@@ -104,7 +104,7 @@ function PlaceInOrder() {
           )}
         </div>
 
-        {/* City & State Row */}
+       
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-base font-light">City</label>
@@ -131,7 +131,7 @@ function PlaceInOrder() {
           </div>
         </div>
 
-        {/* Submit Button */}
+       
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"

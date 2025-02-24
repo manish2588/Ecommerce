@@ -70,10 +70,10 @@ function CartPage() {
         <AnimatePresence>
           {cartItem.map((item, index) => (
             <motion.div
-              key={index} // Use a unique key for each item
+              key={index} 
               initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, x: 100 }} // Add exit animation (move out to the right and fade)
+              exit={{ opacity: 0, x: 100 }} 
               transition={{ duration: 0.3 }}
             >
               <CardListedItem
