@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { auth } from "./firebase";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 
 import { toast, ToastContainer } from "react-toastify";
 function Navbar() {
@@ -38,7 +38,7 @@ function Navbar() {
     try {
       await auth.signOut();
       setIsVisible(!isVisible);
-      toast.success("Sign Out", {
+      toast.success("Signed Out", {
         position: "top-center",
         autoClose: 1000,
       });
